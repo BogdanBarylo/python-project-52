@@ -1,1 +1,11 @@
-<h1>Hello, {{ who }}!</h1>
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<main class="card m-5">
+  <div class="card-body p-5 bg-light">
+    <h1 class="card-title">{% translate "Привет от Хекслета!" %}</h1>
+    <p class="lead">{% translate "Практические курсы по программированию" %}</p>
+    <a class="btn btn-lg btn-primary" href="https://ru.hexlet.io" role="button">{% translate "Узнать больше" %}</a>
+  </div>
+</main>
+{% endblock %}

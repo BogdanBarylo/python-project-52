@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['webserver', '127.0.0.1', 'task-manager-site-tpi0.onrender.com'
 # Application definition
 
 INSTALLED_APPS = [
+    'django_bootstrap5',
     'task_manager',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
