@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<main class="m-5">
+  <div class="p-5">
+    <p class="fs-1">{% translate "Пользователи" %}</p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">{% translate "Имя пользователя" %}</th>
+        <th scope="col">{% translate "Полное имя" %}</th>
+        <th scope="col">{% translate "Дата создания" %}</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.timestamp }}</td>
+        <td><a class="navbar-brand" href="{% url 'update_user' id=user.id %}">{% translate "Изменить" %}</a>
+            <a class="navbar-brand" href="{% url 'delete_user' id=user.id %}">{% translate "Удалить" %}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

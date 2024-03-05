@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<main class="m-5">
+  <div class="p-5">
+    <p class="fs-1">{% translate "Статусы" %}</p>
+    <a class="btn btn-primary mb-3" href="{% url 'create_status' %}">Создать статус</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">{% translate "Имя" %}</th>
+        <th scope="col">{% translate "Дата создания" %}</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for status in statuses %}
+      <tr>
+        <td>{{ status.id }}</td>
+        <td>{{ status.name }}</td>
+        <td>{{ status.timestamp }}</td>
+        <td><a class="navbar-brand" href="{% url 'update_status' id=status.id %}">{% translate "Изменить" %}</a>
+            <a class="navbar-brand" href="{% url 'delete_status' id=status.id %}">{% translate "Удалить" %}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

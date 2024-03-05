@@ -5,7 +5,7 @@ set -o errexit
 poetry install
 
 # Convert static asset files
-python3 hexlet-code/manage.py collectstatic --no-input
+python3 manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-python3 hexlet-code/manage.py migrate
+python3 manage.py migrate
