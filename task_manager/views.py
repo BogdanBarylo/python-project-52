@@ -8,8 +8,6 @@ from .forms import UserLoginForm
 
 class HomePageView(TemplateView):
      template_name = "index.html"
-     
-     pass
 
 
 class LoginView(View):

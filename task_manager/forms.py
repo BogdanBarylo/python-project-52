@@ -1,14 +1,8 @@
-from task_manager.users.models import User
-from django.forms import ModelForm, TextInput, PasswordInput
+from task_manager.users.models import CustomUser
+from django import forms
 
 
-class UserLoginForm(ModelForm):
-
-    class Meta:
-        model = User
-        fields = ['username', 'password1']
-
-        widgets = {
-            'username': TextInput(attrs={'placeholder': 'Имя пользователя', 'class': 'form-control bs-success-border-subtle'}),
-            'password1': PasswordInput(attrs={'placeholder': 'Пароль', 'class': 'form-control bs-success-border-subtle'}),
-        }
+class UserLoginForm(forms.Form):
+    model = CustomUser
+    username = forms.CharField(label='Имя пользователя', max_length=150)
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)

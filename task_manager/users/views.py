@@ -1,62 +1,31 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from task_manager.users.models import User
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from task_manager.users.models import CustomUser
 from task_manager.users.forms import RegistrationForm
+from django.urls import reverse_lazy
 
 
-class UsersView(View):
-
-    def get(self, request, *args, **kwargs):
-        users = User.objects.all()
-        return render(request, 'users/all_users.html',
-            context={'users': users})
+class UsersListView(ListView):
+    model = CustomUser
+    template_name = 'users/all_users.html'
+    context_object_name = 'users'
 
 
-class UserCreateView(View):
-
-    def get(self, request, *args, **kwargs):
-        form = RegistrationForm()
-        return render(request, 'users/create_user.html', {'form': form})
-
-
-    def post(self, request, *args, **kwargs):
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('all_users')
-        return render(request, 'users/create_user.html', {'form': form})
+class UserCreateView(CreateView):
+    template_name = 'users/create_user.html'
+    form_class = RegistrationForm
+    success_url = reverse_lazy('all_users')
 
 
-class UserUpdateView(View):
-
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user =  User.objects.get(id=user_id)
-        form = RegistrationForm(instance=user)
-        return render(request, 'users/update_user.html', {'form': form, 'user_id': user_id})
-    
-
-    def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = User.objects.get(id=user_id)
-        form = RegistrationForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('all_users')
-        return render(request, 'users/update_user.html', {'form': form, 'user_id': user_id})
+class UserUpdateView(UpdateView):
+    model = CustomUser
+    template_name = 'users/update_user.html'
+    form_class = RegistrationForm
+    success_url = reverse_lazy('all_users')
+    pk_url_kwarg = 'id'
 
 
-class UserDeleteView(View):
-
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = User.objects.get(id=user_id)
-        return render(request, 'users/delete_user.html', {'user': user})
-
-
-    def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = User.objects.get(id=user_id)
-        if user:
-            user.delete()
-        return redirect('all_users')
+class UserDeleteView(DeleteView):
+    model = CustomUser
+    template_name = 'users/delete_user.html'
+    success_url = reverse_lazy('all_users')
+    pk_url_kwarg = 'id'

@@ -1,7 +1,7 @@
 {% load django_bootstrap5 %}
 {% load i18n %}
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en" class="h-100" data-bs-theme="auto">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,8 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
+    <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e1e2e3">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">{% translate "Менеджер задач" %}</a>
@@ -32,12 +33,13 @@
         </div>
       </div>
     </nav>
+  </header>
     {% block content %}
     {% endblock %}
-  </body>
-  <footer class="position-sticky bottom-0 start-0 w-10">
-    <div class="container d-flex justify-content-center my-3 pt-3 border-top">
-        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
+  <footer class="footer mt-auto py-4 bg-body-tertiary">
+    <div class="container d-flex justify-content-center border-top">
+      <a class="text-body-secondary" target="_blank" href="https://ru.hexlet.io">Hexlet</a>
     </div>
-    </footer>
+  </footer>
+</body>
 </html>
