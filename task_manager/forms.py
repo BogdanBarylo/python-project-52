@@ -1,8 +1,6 @@
-from task_manager.users.models import CustomUser
-from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
-class UserLoginForm(forms.Form):
-    model = CustomUser
-    username = forms.CharField(label='Имя пользователя', max_length=150)
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+
+class UserLoginForm(AuthenticationForm):
+    pass

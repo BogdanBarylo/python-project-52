@@ -23,12 +23,27 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/users">{% translate "Пользователи" %}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">{% translate "Вход" %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/create">{% translate "Регистрация" %}</a>
-            </li>
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="/statuses">{% translate "Статусы" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{% translate "Метки" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{% translate "Задачи" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">{% translate "Выход" %}</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/login">{% translate "Вход" %}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/create">{% translate "Регистрация" %}</a>
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>

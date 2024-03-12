@@ -1,40 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+{% load django_bootstrap5 %}
 {% load i18n %}
 <div class="container wrapper flex-grow-1">
     <h1 class="card-title my-1 pt-3">{% translate "Регистрация" %}</h1>
-<form action="{% url 'create_user' %}" method="post" class="my-3">
+<form method="post" class="my-3">
     {% csrf_token %}
-    <div class="mb-3">
-        <label for="first_name" class="form-label">{% translate "Имя" %}</label>
-        {{ form.first_name }}
-    </div>
-    <div class="mb-3">
-        <label for="last_name" class="form-label">{% translate "Фамилия" %}</label>
-        {{ form.last_name }}
-    </div>
-    <div class="mb-3">
-        <label for="username" class="form-label">{% translate "Имя пользователя" %}</label>
-        {{ form.username }}
-        <div class="form-text">{% translate "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_." %}</div>
-    </div> 
-    <div class="mb-3">
-        <label for="password1" class="form-label">{% translate "Пароль" %}</label>
-        {{ form.password1 }}
-        <div class="form-text">{% translate "Ваш пароль должен содержать как минимум 3 символа." %}</div>
-    </div>
-    <div class="mb-3">
-        <label for="password2" class="form-label">{% translate "Подтверждение пароля" %}</label>
-        {{ form.password2 }}
-        {% if form.errors %}
-        <div class="error">
-            {% for error in form.errors %}
-                <p class="text-danger">{{ error }}</p>
-            {% endfor %}
-        </div>
-        {% endif %}
-        <div class="form-text">{% translate "Для подтверждения введите, пожалуйста, пароль ещё раз." %}</div>
-    </div>  
+    {% bootstrap_form form %}
     <input type="submit" value="{% translate 'Зарегистрировать' %}" class="btn btn-primary">
 </form>
 </div>

@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+{% load django_bootstrap5 %}
 {% load i18n %}
 <div class="container wrapper flex-grow-1">
     <h1 class="card-title my-1 pt-3">{% translate "Создать статус" %}</h1>
-<form action="{% url 'create_status' %}" method="post" class="my-3">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="name" class="form-label">{% translate "Имя" %}</label>
-        {{ form.name }}
-    </div>
+    <form method="post" class="my-3">
+        {% csrf_token %}
+        {% bootstrap_form form %}
     <input type="submit" value="{% translate 'Создать' %}" class="btn btn-primary">
-</form>
+    </form>
 </div>
 {% endblock %}

@@ -1,60 +1,44 @@
-from django.shortcuts import render, redirect
-from django.views import View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
+from task_manager.users.mixins import CustomLoginRequiredMixin
+from django.urls import reverse_lazy
+from django.contrib import messages
 
-class StatusesView(View):
-
-    def get(self, request, *args, **kwargs):
-        statuses = Status.objects.all()
-        return render(request, 'statuses/all_statuses.html',
-                      context = {'statuses': statuses})
-
-
-class StatusCreateView(View):
-
-    def get(self, request, *args, **kwargs):
-        form = StatusForm()
-        return render(request, 'statuses/create_status.html', {'form': form}) 
+class StatusListView(CustomLoginRequiredMixin, ListView):
+    model = Status
+    template_name = 'statuses/all_statuses.html'
+    context_object_name = 'statuses'
 
 
-    def post(self, request, *args, **kwargs):
-        form = StatusForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('all_statuses')
-        return render(request,'statuses/create_status.html', {'form': form})
+class StatusCreateView(CustomLoginRequiredMixin, CreateView):
+    template_name = 'statuses/create_status.html'
+    form_class = StatusForm
+    
+
+    def get_success_url(self):
+        messages.success(self.request, 'Статус успешно создан')
+        return reverse_lazy('all_statuses')
 
 
-class StatusUpdateView(View):
-
-    def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        form = StatusForm(instance=status)
-        return render(request,'statuses/update_status.html', {'form': form, 'status_id': status_id})
+class StatusUpdateView(CustomLoginRequiredMixin, UpdateView):
+    model = Status
+    template_name = 'statuses/update_status.html'
+    form_class = StatusForm
+    pk_url_kwarg = 'id'
 
 
-    def post(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        form = StatusForm(request.POST, instance=status)
-        if form.is_valid():
-            form.save()
-            return redirect('all_statuses')
-        return render(request, 'statuses/update_status.html', {'form': form, 'status_id': status_id})
+    def get_success_url(self):
+        messages.success(self.request, 'Статус успешно изменен')
+        return reverse_lazy('all_statuses')
 
 
-class StatusDeleteView(View):
+class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
+    model = Status
+    template_name = 'statuses/delete_status.html'
+    pk_url_kwarg = 'id'
 
-    def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        return render(request, 'statuses/delete_status.html', {'status': status})
 
-    def post(self, request, *args, **kwargs):
-        status_id = kwargs.get('id')
-        status = Status.objects.get(id=status_id)
-        if status:
-            status.delete()
-        return redirect('all_statuses')
+    def get_success_url(self):
+        messages.success(self.request, 'Статус успешно удален')
+        return reverse_lazy('all_statuses')
