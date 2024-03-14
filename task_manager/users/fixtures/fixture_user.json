@@ -1,0 +1,15 @@
+[{"model": "users.ProjectUser",
+"pk": 1,
+"fields": {
+    "first_name": "Jeremy",
+    "last_name": "Clarkson",
+    "username": "Jeza",
+    "password": "Jeremy_is_cool_123"}},
+    {
+        "model": "users.ProjectUser", 
+        "pk": 2,
+        "fields": {
+        "first_name": "Michael",
+        "last_name": "Shumaher",
+        "username": "Stig",
+        "password": "Fastest_person_0-100"}}]

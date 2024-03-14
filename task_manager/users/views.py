@@ -16,7 +16,11 @@ class UsersListView(ListView):
 class UserCreateView(CreateView):
     template_name = 'users/create_user.html'
     form_class = RegistrationForm
-    success_url = reverse_lazy('login')
+
+
+    def get_success_url(self):
+        messages.success(self.request,'Пользователь успешно зарегистрирован')
+        return(reverse_lazy('login'))
 
 
 class UserUpdateView(CustomLoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -33,7 +37,15 @@ class UserUpdateView(CustomLoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Пользователь успешно изменен')
-        return reverse_lazy('update_user', kwargs={'id': self.object.id})
+        return reverse_lazy('all_users')
+    
+    
+    def form_valid(self, form):
+        if self.request.user.username != form.cleaned_data['username']:
+            return super().form_valid(form)
+        else:
+            form.cleaned_data.pop('username', None)
+            return super().form_valid(form)
 
 
 class UserDeleteView(CustomLoginRequiredMixin, UserPassesTestMixin, DeleteView):
