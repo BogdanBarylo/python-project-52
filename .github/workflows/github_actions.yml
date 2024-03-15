@@ -21,11 +21,11 @@ jobs:
           pip install poetry
           make install
       - name: Build project
-        run: 
+        run: |
           poetry run python manage.py collectstatic --no-input
           poetry run python manage.py migrate
       - name: Run tests
-        run: |
+        run:
           make test
       - name: Lint
         run: 
