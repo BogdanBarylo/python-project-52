@@ -6,9 +6,6 @@ on:
   pull_request:
     branches:
       - main
-env:
-  DATABASE_URL: sqlite:///task_manager.sqlite3
-  SECRET_KEY: $SECRET_KEY
 jobs:
   build:
     runs-on: ubuntu-latest
