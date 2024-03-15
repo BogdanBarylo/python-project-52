@@ -21,8 +21,9 @@ jobs:
           pip install poetry
           make install
       - name: Build project
-        run:
-          make build
+        run: |
+          python3 manage.py collectstatic --no-input
+          python3 manage.py migrate
       - name: Run tests
         run:
           make test
