@@ -31,7 +31,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['webserver', '127.0.0.1', 'task-manager-site-tpi0.onrender.com']
+ALLOWED_HOSTS = ['webserver', '127.0.0.1',
+                 'task-manager-site-tpi0.onrender.com']
 
 
 # Application definition
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {'default': dj_database_url.config(
-        default= os.getenv('DATABASE_URL'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         conn_health_checks=True,
     )
@@ -97,18 +98,22 @@ DATABASES = {'default': dj_database_url.config(
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME':
+     'django.contrib.auth.password_validation.'
+     'UserAttributeSimilarityValidator',
+     },
+    {'NAME':
+     'django.contrib.auth.password_validation.'
+     'MinimumLengthValidator',
+     },
+    {'NAME':
+     'django.contrib.auth.password_validation.'
+     'CommonPasswordValidator',
+     },
+    {'NAME':
+     'django.contrib.auth.password_validation.'
+     'NumericPasswordValidator',
+     },
 ]
 
 
@@ -132,11 +137,15 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # Tell Django to copy static assets into a path called
+    # `staticfiles` (this is specific to Render)
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Enable the WhiteNoise storage backend, which compresses
+    # static files to reduce disk use
+    # and renames the files with unique names for each version
+    # to support long-term caching
+    STATICFILES_STORAGE = 'whitenoise.storage.\
+        CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

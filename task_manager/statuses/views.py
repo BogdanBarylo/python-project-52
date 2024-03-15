@@ -5,6 +5,7 @@ from task_manager.users.mixins import CustomLoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 
+
 class StatusListView(CustomLoginRequiredMixin, ListView):
     model = Status
     template_name = 'statuses/all_statuses.html'
@@ -14,7 +15,6 @@ class StatusListView(CustomLoginRequiredMixin, ListView):
 class StatusCreateView(CustomLoginRequiredMixin, CreateView):
     template_name = 'statuses/create_status.html'
     form_class = StatusForm
-    
 
     def get_success_url(self):
         messages.success(self.request, 'Статус успешно создан')
@@ -27,7 +27,6 @@ class StatusUpdateView(CustomLoginRequiredMixin, UpdateView):
     form_class = StatusForm
     pk_url_kwarg = 'id'
 
-
     def get_success_url(self):
         messages.success(self.request, 'Статус успешно изменен')
         return reverse_lazy('all_statuses')
@@ -37,7 +36,6 @@ class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete_status.html'
     pk_url_kwarg = 'id'
-
 
     def get_success_url(self):
         messages.success(self.request, 'Статус успешно удален')

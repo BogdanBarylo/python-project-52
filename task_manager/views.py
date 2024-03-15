@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView
-from task_manager.forms import UserLoginForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 
 
@@ -12,13 +12,12 @@ class HomePageView(TemplateView):
 
 class UserLoginView(LoginView):
     template_name = 'login.html'
-    authentication_form = UserLoginForm
-
+    authentication_form = AuthenticationForm
 
     def form_valid(self, form):
         messages.success(self.request, 'Вы залогинены')
         return super().form_valid(form)
-        
+
 
 def logout_user(request):
     logout(request)

@@ -22,7 +22,7 @@ from .views import HomePageView
 urlpatterns = [
     path('', HomePageView.as_view(), name='index'),
     path('users/', include('task_manager.users.urls')),
-    path('statuses/',include('task_manager.statuses.urls')),
+    path('statuses/', include('task_manager.statuses.urls')),
     path('admin/', admin.site.urls),
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('logout/', views.logout_user, name='logout'),
