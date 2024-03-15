@@ -34,7 +34,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          DATABASE_URL: sqlite:///task_manager.sqlite3
           SECRET_KEY: $SECRET_KEY
         with:
           coverageCommand: make test-coverage
