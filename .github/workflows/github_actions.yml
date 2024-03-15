@@ -35,7 +35,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           DATABASE_URL: sqlite:///task_manager.sqlite3
-          SECRET_KEY: $SECRET_KEY
+          SECRET_KEY: "1234"
         with:
           coverageCommand: make test-coverage
           debug: true
