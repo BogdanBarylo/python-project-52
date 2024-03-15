@@ -22,9 +22,10 @@ jobs:
           make install
       - name: Build project
         run: 
-          make build
+          poetry run python manage.py collectstatic --no-input
+          poetry run python manage.py migrate
       - name: Run tests
-        run: 
+        run: |
           make test
       - name: Lint
         run: 
