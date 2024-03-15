@@ -20,4 +20,4 @@ test:
 	poetry run python3 manage.py test task_manager
 
 test-coverage:
-	poetry run coverage run --source='.' manage.py test -v 2 && coverage xml
+	poetry run coverage run --source='.' manage.py test -v 2 && poetry run coverage xml
