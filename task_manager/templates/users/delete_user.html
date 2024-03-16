@@ -1,12 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base_delete.html" %}
 {% load i18n %}
-<div class="container wrapper flex-grow-1 mb-3">
-    <form action="{% url 'delete_user' id=user.id %}" method="post">
-        {% csrf_token %}
-        <h1 class="card-title my-1 pt-3">{% translate "Удаление пользователя" %}</h1>
-        <p class="lead">{% translate "Вы уверены, что хотите удалить" %} {{user.first_name }} {{user.last_name }}?</p>
-        <input type="submit" class="btn btn-danger" value="{% translate 'Да, удалить' %}">
-    </form>
-</div>
-{% endblock %}
+{% block title %}{% translate "Удаление пользователя" %}{% endblock %}
+{% block delete_content %} {{ user }}{% endblock %}

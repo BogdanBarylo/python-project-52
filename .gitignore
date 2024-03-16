@@ -1,7 +1,7 @@
 __pycache__/
 .venv/
 .env
+*.sqlite3
 staticfiles
-task_manager.sqlite3
 coverage.xml
 .coverage
