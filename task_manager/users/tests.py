@@ -1,17 +1,12 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from task_manager.users.models import ProjectUser
-from django.contrib.messages import get_messages
+from task_manager.check_message import get_message_txt
 
 
 USER_JAMES = {'first_name': 'James', 'last_name': 'May',
               'username': 'CapitanSlow', 'password1': 'Huracan_321',
               'password2': 'Huracan_321'}
-
-
-def get_message_txt(response):
-    messages = list(get_messages(response.wsgi_request))
-    return str(messages[0])
 
 
 class UsersListViewTestCase(TestCase):
