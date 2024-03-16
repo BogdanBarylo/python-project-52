@@ -8,12 +8,12 @@ from django.contrib import messages
 
 class StatusListView(CustomLoginRequiredMixin, ListView):
     model = Status
-    template_name = 'statuses/all_statuses.html'
+    template_name = 'all_statuses.html'
     context_object_name = 'statuses'
 
 
 class StatusCreateView(CustomLoginRequiredMixin, CreateView):
-    template_name = 'statuses/create_status.html'
+    template_name = 'create_status.html'
     form_class = StatusForm
 
     def get_success_url(self):
@@ -23,7 +23,7 @@ class StatusCreateView(CustomLoginRequiredMixin, CreateView):
 
 class StatusUpdateView(CustomLoginRequiredMixin, UpdateView):
     model = Status
-    template_name = 'statuses/update_status.html'
+    template_name = 'update_status.html'
     form_class = StatusForm
     pk_url_kwarg = 'id'
 
@@ -34,7 +34,7 @@ class StatusUpdateView(CustomLoginRequiredMixin, UpdateView):
 
 class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Status
-    template_name = 'statuses/delete_status.html'
+    template_name = 'delete_status.html'
     pk_url_kwarg = 'id'
 
     def get_success_url(self):

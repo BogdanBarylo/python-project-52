@@ -9,12 +9,12 @@ from task_manager.users.mixins import CustomLoginRequiredMixin
 
 class UsersListView(ListView):
     model = ProjectUser
-    template_name = 'users/all_users.html'
+    template_name = 'all_users.html'
     context_object_name = 'users'
 
 
 class UserCreateView(CreateView):
-    template_name = 'users/create_user.html'
+    template_name = 'create_user.html'
     form_class = RegistrationForm
 
     def get_success_url(self):
@@ -26,7 +26,7 @@ class UserUpdateView(CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      UpdateView):
     model = ProjectUser
-    template_name = 'users/update_user.html'
+    template_name = 'update_user.html'
     form_class = RegistrationForm
     pk_url_kwarg = 'id'
 
@@ -43,7 +43,7 @@ class UserDeleteView(CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      DeleteView):
     model = ProjectUser
-    template_name = 'users/delete_user.html'
+    template_name = 'delete_user.html'
     pk_url_kwarg = 'id'
 
     def test_func(self):
