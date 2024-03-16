@@ -22,7 +22,7 @@
       <tr>
         <td>{{ status.id }}</td>
         <td>{{ status.name }}</td>
-        <td>{{ status.timestamp|date:'d.m.Y H:m' }}</td>
+        <td>{{ status.timestamp|date:'d.m.Y H:i' }}</td>
         <td>
           <a class="navbar-brand" href="{% url 'update_status' id=status.id %}">{% translate "Изменить" %}</a>
             <br>

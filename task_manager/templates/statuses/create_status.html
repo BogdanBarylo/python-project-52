@@ -1,13 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
-{% load django_bootstrap5 %}
+{% extends "base_create.html" %}
 {% load i18n %}
-<div class="container wrapper flex-grow-1">
-    <h1 class="card-title my-1 pt-3">{% translate "Создать статус" %}</h1>
-    <form method="post" class="my-3">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-    <input type="submit" value="{% translate 'Создать' %}" class="btn btn-primary">
-    </form>
-</div>
-{% endblock %}
+{% block title %}{% translate "Создать статус" %}{% endblock %}
+{% block create_content %}<input type="submit" value="{% translate 'Создать' %}" class="btn btn-primary">{% endblock %}

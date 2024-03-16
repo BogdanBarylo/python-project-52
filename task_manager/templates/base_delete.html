@@ -3,10 +3,10 @@
 {% load i18n %}
 {% block content %}
 <div class="container wrapper flex-grow-1 mb-3">
+    <h1 class="card-title my-1 pt-3">{% block title %}{% endblock %}</h1> 
     <form method="post" class="my-3">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <h1 class="card-title my-1 pt-3">{% block title %}{% endblock %}</h1> 
         <p class="lead">{% translate "Вы уверены, что хотите удалить" %}{% block delete_content %}{% endblock %}?</p>
         <input type="submit" class="btn btn-danger" value="{% translate 'Да, удалить' %}">
     </form>

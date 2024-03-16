@@ -9,7 +9,7 @@
         "model": "users.ProjectUser", 
         "pk": 2,
         "fields": {
-        "first_name": "Michael",
-        "last_name": "Shumaher",
-        "username": "Stig",
-        "password": "Fastest_person_0-100"}}]
+            "first_name": "Richard",
+            "last_name": "Hammond",
+            "username": "Mrcrash",
+            "password": "Mustang_123"}}]
