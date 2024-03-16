@@ -7,8 +7,8 @@
     <form method="post" class="my-3">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <p class="lead">{% translate "Вы уверены, что хотите удалить" %}{% block delete_content %}{% endblock %}?</p>
-        <input type="submit" class="btn btn-danger" value="{% translate 'Да, удалить' %}">
+        <p class="lead">{% translate "Are you sure you want to delete" %}{% block delete_content %}{% endblock %}?</p>
+        <input type="submit" class="btn btn-danger" value="{% translate 'Yes, delete it' %}">
     </form>
 </div>
 {% endblock %}

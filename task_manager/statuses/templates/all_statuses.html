@@ -5,15 +5,15 @@
 <main class="m-5">
   {% bootstrap_messages %}
   <div class="p-5">
-    <p class="fs-1">{% translate "Статусы" %}</p>
-    <a class="btn btn-primary mb-3" href="{% url 'create_status' %}">Создать статус</a>
+    <p class="fs-1">{% translate "Statuses" %}</p>
+    <a class="btn btn-primary mb-3" href="{% url 'create_status' %}">{% translate "Create status" %}</a>
   </div>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">{% translate "Имя" %}</th>
-        <th scope="col">{% translate "Дата создания" %}</th>
+        <th scope="col">{% translate "Name" %}</th>
+        <th scope="col">{% translate "Creation date" %}</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -24,9 +24,9 @@
         <td>{{ status.name }}</td>
         <td>{{ status.timestamp|date:'d.m.Y H:i' }}</td>
         <td>
-          <a class="navbar-brand" href="{% url 'update_status' id=status.id %}">{% translate "Изменить" %}</a>
+          <a class="navbar-brand" href="{% url 'update_status' id=status.id %}">{% translate "Edit" %}</a>
             <br>
-          <a class="navbar-brand" href="{% url 'delete_status' id=status.id %}">{% translate "Удалить" %}</a>
+          <a class="navbar-brand" href="{% url 'delete_status' id=status.id %}">{% translate "Remove" %}</a>
         </td>
       </tr>
       {% endfor %}
