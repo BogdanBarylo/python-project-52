@@ -10,3 +10,9 @@ class RegistrationForm(UserCreationForm):
                   'username',
                   'password1',
                   'password2']
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if self.instance.username == username:
+            return username
+        return super().clean_username()

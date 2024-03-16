@@ -1,0 +1,10 @@
+[{"model": "statuses.Status",
+"pk": 1,
+"fields": {
+    "name": "ready",
+    "timestamp":"2024-03-15T10:00:00"}},
+    {"model": "statuses.Status",
+    "pk": 2,
+    "fields": {
+        "name": "in_work",
+        "timestamp":"2024-03-15T11:00:00"}}]

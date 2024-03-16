@@ -163,3 +163,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.ProjectUser'
 
 LOGIN_REDIRECT_URL = '/'
+
+DATETIME_FORMAT = '%d.%m.%Y %H:%M'
