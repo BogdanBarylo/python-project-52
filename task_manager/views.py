@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 class HomePageView(TemplateView):
@@ -15,11 +16,11 @@ class UserLoginView(LoginView):
     authentication_form = AuthenticationForm
 
     def form_valid(self, form):
-        messages.success(self.request, 'Вы залогинены')
+        messages.success(self.request, _("You're logged in"))
         return super().form_valid(form)
 
 
 def logout_user(request):
     logout(request)
-    messages.info(request, 'Вы разлогинены')
+    messages.info(request, _("You're unlogged"))
     return redirect('index')

@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
 from task_manager.users.mixins import CustomLoginRequiredMixin
+from django.utils.translation import gettext as _
 
 
 class UsersListView(ListView):
@@ -18,7 +19,8 @@ class UserCreateView(CreateView):
     form_class = RegistrationForm
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно зарегистрирован')
+        messages.success(self.request,
+                         _('User registered successfully'))
         return (reverse_lazy('login'))
 
 
@@ -35,7 +37,7 @@ class UserUpdateView(CustomLoginRequiredMixin,
         return obj == self.request.user
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно изменен')
+        messages.success(self.request, _('User successfully changed'))
         return reverse_lazy('all_users')
 
 
@@ -51,5 +53,5 @@ class UserDeleteView(CustomLoginRequiredMixin,
         return obj == self.request.user
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно удален')
+        messages.success(self.request, _('User successfully deleted'))
         return reverse_lazy('all_users')

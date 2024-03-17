@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 20:55+0300\n"
+"POT-Creation-Date: 2024-03-17 09:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: statuses/templates/all_statuses.html:8 templates/base.html:28
 msgid "Statuses"
 msgstr "Статусы"
+
+#: statuses/templates/all_statuses.html:9
+#: statuses/templates/create_status.html:3
+msgid "Create status"
+msgstr "Создать статус"
 
 #: statuses/templates/all_statuses.html:15
 msgid "Name"
@@ -38,10 +45,6 @@ msgstr "Изменить"
 msgid "Remove"
 msgstr "Удалить"
 
-#: statuses/templates/create_status.html:3 statuses/templates/all_statuses.html:9
-msgid "Create status"
-msgstr "Создать статус"
-
 #: statuses/templates/create_status.html:4
 msgid "Create"
 msgstr "Создать"
@@ -53,6 +56,18 @@ msgstr "Удаление статуса"
 #: statuses/templates/update_status.html:3
 msgid "Edit status"
 msgstr "Изменение статуса"
+
+#: statuses/views.py:21
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
+
+#: statuses/views.py:32
+msgid "Status successfully changed"
+msgstr "Статус успешно изменен"
+
+#: statuses/views.py:42
+msgid "Status successfully deleted"
+msgstr "Статус успешно удален"
 
 #: templates/base.html:17
 msgid "Task manager"
@@ -79,8 +94,9 @@ msgid "Log in"
 msgstr "Вход"
 
 #: templates/base.html:44 users/templates/create_user.html:3
-msgid "Регистрация"
-msgstr "Sign up"
+#: users/templates/create_user.html:4
+msgid "Sign in"
+msgstr "Зарегистрировать"
 
 #: templates/base_delete.html:10
 msgid "Are you sure you want to delete"
@@ -106,6 +122,14 @@ msgstr "Узнать больше"
 msgid "Enter"
 msgstr "Войти"
 
+#: users/mixins.py:8
+msgid "You are not authorized! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: users/mixins.py:20
+msgid "You do not have permissions to modify another user"
+msgstr "У вас нет прав для изменения другого пользователя"
+
 #: users/templates/all_users.html:14
 msgid "Username"
 msgstr "Имя пользователя"
@@ -114,10 +138,6 @@ msgstr "Имя пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: users/templates/create_user.html:4
-msgid "Sign up"
-msgstr "Зарегистрировать"
-
 #: users/templates/delete_user.html:3
 msgid "User deletion"
 msgstr "Удаление пользователя"
@@ -125,3 +145,23 @@ msgstr "Удаление пользователя"
 #: users/templates/update_user.html:3
 msgid "User edit"
 msgstr "Изменение пользователя"
+
+#: users/views.py:23
+msgid "User registered successfully"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: users/views.py:40
+msgid "User successfully changed"
+msgstr "Пользователь успешно изменен"
+
+#: users/views.py:56
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удален"
+
+#: views.py:19
+msgid "You're logged in"
+msgstr "Вы залогинены"
+
+#: views.py:25
+msgid "You're unlogged"
+msgstr "Вы разлогинены"
