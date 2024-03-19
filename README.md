@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/db3c5ac363e7706ece1e/test_coverage)](https://codeclimate.com/github/BogdanBarylo/python-project-52/test_coverage)
 
 
-### Task Manager
+# Task Manager
 
 ## Usage
 Task Manager is a task management system. It allows you to set tasks, assign executors and change their statuses.
