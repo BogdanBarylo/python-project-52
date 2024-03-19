@@ -8,7 +8,9 @@
 ## Usage
 Task Manager is a task management system. It allows you to set tasks, assign executors and change their statuses.
 To use the application, you need to register and log in with your username and password.
-A registered user can create, modify and delete tasks, statuses and labels. A task can be deleted only by its author. 
+A registered user can create, modify and delete tasks, statuses and labels. A task can be deleted only by its author.
+The project implements translation into 2 languages. By default Russian is set, but if you need to use English you need to set in settings.py 
+LANGUAGE_CODE = 'en'
 
 ### View site here:
 [Task Manager](https://task-manager-site-tpi0.onrender.com)
