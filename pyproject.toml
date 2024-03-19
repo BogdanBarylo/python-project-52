@@ -16,6 +16,7 @@ gunicorn = "^21.2.0"
 whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 django-bootstrap5 = "^23.4"
 coverage = "^7.4.4"
+uvicorn = "^0.28.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"

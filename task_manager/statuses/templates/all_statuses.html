@@ -18,15 +18,15 @@
       </tr>
     </thead>
     <tbody>
-      {% for status in statuses %}
+      {% for status in object_list %}
       <tr>
-        <td>{{ status.id }}</td>
+        <td>{{ status.pk }}</td>
         <td>{{ status.name }}</td>
         <td>{{ status.timestamp|date:'d.m.Y H:i' }}</td>
         <td>
-          <a class="navbar-brand" href="{% url 'update_status' id=status.id %}">{% translate "Edit" %}</a>
+          <a class="navbar-brand" href="{% url 'update_status' pk=status.pk %}">{% translate "Edit" %}</a>
             <br>
-          <a class="navbar-brand" href="{% url 'delete_status' id=status.id %}">{% translate "Remove" %}</a>
+          <a class="navbar-brand" href="{% url 'delete_status' pk=status.pk %}">{% translate "Remove" %}</a>
         </td>
       </tr>
       {% endfor %}

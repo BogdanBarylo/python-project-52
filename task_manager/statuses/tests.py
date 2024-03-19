@@ -55,9 +55,9 @@ class UpdateStatusTestCase(TestCase):
 
     def test_update_status(self):
         c = Client()
-        status_id = 1
+        status_pk = 1
         c.force_login(ProjectUser.objects.get(username='Jeza'))
-        response = c.post(reverse('update_status', kwargs={'id': status_id}),
+        response = c.post(reverse('update_status', kwargs={'pk': status_pk}),
                           {'name': 'finished'})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('all_statuses'))
@@ -68,8 +68,8 @@ class UpdateStatusTestCase(TestCase):
 
     def test_unauthorized_user_update_status(self):
         c = Client()
-        status_id = 1
-        response = c.post(reverse('update_status', kwargs={'id': status_id}),
+        status_pk = 1
+        response = c.post(reverse('update_status', kwargs={'pk': status_pk}),
                           {'name': 'finished'})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('login'))
@@ -83,9 +83,9 @@ class DeleteStatusTestCase(TestCase):
 
     def test_delete_status(self):
         c = Client()
-        status_id = 1
+        status_pk = 1
         c.force_login(ProjectUser.objects.get(username='Jeza'))
-        response = c.post(reverse('delete_status', kwargs={'id': status_id}))
+        response = c.post(reverse('delete_status', kwargs={'pk': status_pk}))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('all_statuses'))
         self.assertEqual(get_message_txt(response),
@@ -93,8 +93,8 @@ class DeleteStatusTestCase(TestCase):
 
     def test_unauthorized_user_delete_status(self):
         c = Client()
-        status_id = 1
-        response = c.post(reverse('delete_user', kwargs={'id': status_id}))
+        status_pk = 1
+        response = c.post(reverse('delete_user', kwargs={'pk': status_pk}))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('login'))
         self.assertEqual(get_message_txt(response),

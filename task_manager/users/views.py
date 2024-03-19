@@ -1,17 +1,20 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from task_manager.users.models import ProjectUser
-from task_manager.users.forms import RegistrationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
-from task_manager.users.mixins import CustomLoginRequiredMixin
 from django.utils.translation import gettext as _
+from task_manager.users.models import ProjectUser
+from task_manager.users.forms import RegistrationForm
+from task_manager.users.mixins import CustomUserMixin
+from task_manager.mixins import CustomLoginRequiredMixin
 
 
 class UsersListView(ListView):
-    model = ProjectUser
     template_name = 'all_users.html'
     context_object_name = 'users'
+
+    def get_queryset(self):
+        return ProjectUser.objects.exclude(is_staff=True)
 
 
 class UserCreateView(CreateView):
@@ -24,13 +27,13 @@ class UserCreateView(CreateView):
         return (reverse_lazy('login'))
 
 
-class UserUpdateView(CustomLoginRequiredMixin,
+class UserUpdateView(CustomUserMixin,
+                     CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      UpdateView):
     model = ProjectUser
     template_name = 'update_user.html'
     form_class = RegistrationForm
-    pk_url_kwarg = 'id'
 
     def test_func(self):
         obj = self.get_object()
@@ -41,12 +44,12 @@ class UserUpdateView(CustomLoginRequiredMixin,
         return reverse_lazy('all_users')
 
 
-class UserDeleteView(CustomLoginRequiredMixin,
+class UserDeleteView(CustomUserMixin,
+                     CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      DeleteView):
     model = ProjectUser
     template_name = 'delete_user.html'
-    pk_url_kwarg = 'id'
 
     def test_func(self):
         obj = self.get_object()
