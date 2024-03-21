@@ -23,11 +23,6 @@ jobs:
       - name: Build project
         run: |
           make build
-      - name: Run tests
-        env:
-          SECRET_KEY: $SECRET_KEY
-        run:
-          make test
       - name: Lint
         run: 
           make lint

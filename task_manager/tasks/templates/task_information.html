@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate 'Task view' %}</h1>
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+      <h2>{{ task.name }}</h2>
+    </div>
+    <div class="card-body bg-light">
+      <p></p>
+      <hr>
+      <div class="container">
+        <div class="row p-1">
+          <div class="col">{% translate 'Author' %}</div>
+          <div class="col">{{ task.author }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate 'Executor' %}</div>
+          <div class="col">{{ task.executor }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate 'Status' %}</div>
+          <div class="col">{{ task.task_status }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate 'Creation date' %}</div>
+          <div class="col">{{ task.timestamp|date:'d.m.Y H:i' }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+            <a class="navbar-brand" href="{% url 'update_task' pk=task.pk %}">{% translate "Edit" %}</a>
+          <br>
+            <a class="navbar-brand" href="{% url 'delete_task' pk=task.pk %}">{% translate "Remove" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+{% endblock %}

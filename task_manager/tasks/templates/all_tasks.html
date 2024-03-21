@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+<main class="m-5">
+  {% bootstrap_messages %}
+  <div class="p-5">
+    <p class="fs-1">{% translate "Tasks" %}</p>
+    <a class="btn btn-primary mb-3" href="{% url 'create_task' %}">{% translate "Create task" %}</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">{% translate "Name" %}</th>
+        <th scope="col">{% translate "Status" %}</th>
+        <th scope="col">{% translate "Author" %}</th>
+        <th scope="col">{% translate "Executor" %}</th>
+        <th scope="col">{% translate "Creation date" %}</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in object_list %}
+      <tr>
+        <td>{{ task.pk }}</td>
+        <td><a href="{% url 'task_information' task.pk %}">{{ task.name }}</a></td>
+        <td>{{ task.task_status }}</td>
+        <td>{{ task.author }}</td>
+        <td>{{ task.executor }}</td>
+        <td>{{ task.timestamp|date:'d.m.Y H:i' }}</td>
+        <td>
+          <a class="navbar-brand" href="{% url 'update_task' pk=task.pk %}">{% translate "Edit" %}</a>
+          <br>
+          <a class="navbar-brand" href="{% url 'delete_task' pk=task.pk %}">{% translate "Remove" %}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

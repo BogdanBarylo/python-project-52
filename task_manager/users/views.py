@@ -1,8 +1,10 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.contrib import messages
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
+from django.contrib import messages
 from task_manager.users.models import ProjectUser
 from task_manager.users.forms import RegistrationForm
 from task_manager.users.mixins import CustomUserMixin
@@ -11,40 +13,36 @@ from task_manager.mixins import CustomLoginRequiredMixin
 
 class UsersListView(ListView):
     template_name = 'all_users.html'
-    context_object_name = 'users'
 
     def get_queryset(self):
         return ProjectUser.objects.exclude(is_staff=True)
 
 
-class UserCreateView(CreateView):
+class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = 'create_user.html'
     form_class = RegistrationForm
-
-    def get_success_url(self):
-        messages.success(self.request,
-                         _('User registered successfully'))
-        return (reverse_lazy('login'))
+    success_url = reverse_lazy('login')
+    success_message = _('User registered successfully')
 
 
-class UserUpdateView(CustomUserMixin,
+class UserUpdateView(SuccessMessageMixin,
+                     CustomUserMixin,
                      CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      UpdateView):
     model = ProjectUser
     template_name = 'update_user.html'
     form_class = RegistrationForm
+    success_url = reverse_lazy('all_users')
+    success_message = _('User successfully changed')
 
     def test_func(self):
         obj = self.get_object()
         return obj == self.request.user
 
-    def get_success_url(self):
-        messages.success(self.request, _('User successfully changed'))
-        return reverse_lazy('all_users')
 
-
-class UserDeleteView(CustomUserMixin,
+class UserDeleteView(SuccessMessageMixin,
+                     CustomUserMixin,
                      CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      DeleteView):
@@ -55,6 +53,13 @@ class UserDeleteView(CustomUserMixin,
         obj = self.get_object()
         return obj == self.request.user
 
-    def get_success_url(self):
-        messages.success(self.request, _('User successfully deleted'))
-        return reverse_lazy('all_users')
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_message = _('User successfully deleted')
+        if not self.object.task_set.exists():
+            self.object.delete()
+            messages.success(self.request, success_message)
+        else:
+            messages.error(self.request,
+                           _('Cannot delete a user because it is in use'))
+        return redirect('all_users')

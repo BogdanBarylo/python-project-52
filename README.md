@@ -18,7 +18,6 @@ LANGUAGE_CODE = 'en'
 ## Installation requirements
 
 - Python: 3.10
-- Django: 5.0.3
 - Poetry: 1.4.0
 
 #### Repository cloning

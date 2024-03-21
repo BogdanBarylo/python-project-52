@@ -15,12 +15,12 @@ dj-database-url = "^2.1.0"
 gunicorn = "^21.2.0"
 whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 django-bootstrap5 = "^23.4"
-coverage = "^7.4.4"
 uvicorn = "^0.28.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
 pytest-cov = "^4.1.0"
+coverage = "^7.4.4"
 
 [build-system]
 requires = ["poetry-core"]

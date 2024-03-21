@@ -1,0 +1,19 @@
+[{"model": "tasks.Task",
+"pk": 1,
+"fields": { 
+  "name": "Task 1",
+  "description": "Description for Task 1",
+  "task_status": 1,
+  "executor": 2,
+  "author": 1,
+  "timestamp": "2024-03-21T12:00:00"}},
+    {
+      "model": "tasks.Task", 
+      "pk": 2,
+      "fields": {
+        "name": "Task 2",
+        "description": "Description for Task 2",
+        "task_status": 2,
+        "executor": null,
+        "author": 2,
+        "timestamp": "2024-03-22T10:00:00"}}]
