@@ -5,7 +5,7 @@ from task_manager.users.models import ProjectUser
 from task_manager.check_message import get_message_txt
 
 
-class TaskListViewTestCase(TestCase):
+class TaskFilterViewTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
                 'task_manager/labels/fixtures/fixture_label.json',
@@ -17,6 +17,22 @@ class TaskListViewTestCase(TestCase):
         response = c.get(reverse('all_tasks'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, text='ready')
+
+    def test_task_filtering(self):
+        c = Client()
+        c.force_login(ProjectUser.objects.get(username='Jeza'))
+        response = c.get('/tasks/', {'task_status': 2})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, text='Task 2')
+        self.assertNotContains(response, text='Task 1')
+
+    def test_task_self_filter(self):
+        c = Client()
+        c.force_login(ProjectUser.objects.get(username='Jeza'))
+        response = c.get('/tasks/', {'self_tasks': True})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, text='Task 2')
+        self.assertNotContains(response, text='Task 3')
 
     def test_unauthorized_user_all_tasks(self):
         c = Client()

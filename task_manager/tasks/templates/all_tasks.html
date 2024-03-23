@@ -2,12 +2,21 @@
 {% block content %}
 {% load django_bootstrap5 %}
 {% load i18n %}
+<div class="container wrapper flex-grow-1">
 <main class="m-5">
   {% bootstrap_messages %}
-  <div class="p-5">
-    <p class="fs-1">{% translate "Tasks" %}</p>
+  <div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Tasks" %}</h1>
     <a class="btn btn-primary mb-3" href="{% url 'create_task' %}">{% translate "Create task" %}</a>
   </div>
+  <div class="card mb-3">
+    <div class="card-body bg-light">
+      <form method="get">
+        {% bootstrap_form filter.form %}
+        <input type="submit" value="{% translate 'Show' %}" class="btn btn-primary">
+      </form>
+    </div>
+  </div> 
   <table class="table">
     <thead>
       <tr>
@@ -39,4 +48,5 @@
     </tbody>
   </table>
 </main>
+</div>
 {% endblock %}
