@@ -8,6 +8,7 @@ from task_manager.check_message import get_message_txt
 class TaskListViewTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_all_tasks(self):
@@ -29,6 +30,7 @@ class TaskListViewTestCase(TestCase):
 class TaskDetailViewTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_detail_task(self):
@@ -52,6 +54,7 @@ class TaskDetailViewTestCase(TestCase):
 class CreateTaskTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_create_task(self):
@@ -79,6 +82,7 @@ class CreateTaskTestCase(TestCase):
 class UpdateTaskTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_update_task(self):
@@ -108,6 +112,7 @@ class UpdateTaskTestCase(TestCase):
 class DeleteTaskTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_delete_task(self):

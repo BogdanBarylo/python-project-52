@@ -1,6 +1,7 @@
 from django.db import models
 from task_manager.statuses.models import Status
 from task_manager.users.models import ProjectUser
+from task_manager.labels.models import Label
 from django.utils.translation import gettext as _
 
 
@@ -17,3 +18,15 @@ class Task(models.Model):
                                related_name='creator',
                                verbose_name=_('Author'))
     timestamp = models.DateTimeField(auto_now_add=True)
+    labels = models.ManyToManyField(
+        Label,
+        through='TaskLabelModel',
+        through_fields=('task', 'label'),
+        blank=True,
+        verbose_name=_('Labels'),
+    )
+
+
+class TaskLabelModel(models.Model):
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)

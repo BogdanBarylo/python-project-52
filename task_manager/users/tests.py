@@ -10,7 +10,10 @@ USER_JAMES = {'first_name': 'James', 'last_name': 'May',
 
 
 class UsersListViewTestCase(TestCase):
-    fixtures = ['task_manager/users/fixtures/fixture_user.json']
+    fixtures = ['task_manager/users/fixtures/fixture_user.json',
+                'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
+                'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_all_users(self):
         c = Client()
@@ -33,7 +36,10 @@ class CreateUserTestCase(TestCase):
 
 
 class UpdateUserTestCase(TestCase):
-    fixtures = ['task_manager/users/fixtures/fixture_user.json']
+    fixtures = ['task_manager/users/fixtures/fixture_user.json',
+                'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
+                'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_update_user(self):
         c = Client()
@@ -75,6 +81,7 @@ class UpdateUserTestCase(TestCase):
 class DeleteUserTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
                 'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/labels/fixtures/fixture_label.json',
                 'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_delete_user(self):

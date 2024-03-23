@@ -1,0 +1,15 @@
+[{"model": "labels.Label",
+"pk": 1,
+"fields": {
+    "name": "immediately",
+    "timestamp":"2024-03-15T10:00:00"}},
+    {"model": "labels.Label",
+    "pk": 2,
+    "fields": {
+        "name": "need it tomorrow",
+        "timestamp":"2024-03-15T11:00:00"}},
+    {"model": "labels.Label",
+    "pk": 3,
+    "fields": {
+        "name": "good money",
+        "timestamp":"2024-03-15T11:00:00"}}]
