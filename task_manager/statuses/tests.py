@@ -79,11 +79,12 @@ class UpdateStatusTestCase(TestCase):
 
 class DeleteStatusTestCase(TestCase):
     fixtures = ['task_manager/users/fixtures/fixture_user.json',
-                'task_manager/statuses/fixtures/status_fixture.json']
+                'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_delete_status(self):
         c = Client()
-        status_pk = 1
+        status_pk = 3
         c.force_login(ProjectUser.objects.get(username='Jeza'))
         response = c.post(reverse('delete_status', kwargs={'pk': status_pk}))
         self.assertEqual(response.status_code, 302)
@@ -91,10 +92,21 @@ class DeleteStatusTestCase(TestCase):
         self.assertEqual(get_message_txt(response),
                          'Статус успешно удален')
 
+    def test_delete_using_status(self):
+        c = Client()
+        status_pk = 1
+        c.force_login(ProjectUser.objects.get(username='Jeza'))
+        response = c.post(reverse('delete_status', kwargs={'pk': status_pk}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse('all_statuses'))
+        self.assertEqual(get_message_txt(response),
+                         'Невозможно удалить статус, '
+                         'потому что он используется')
+
     def test_unauthorized_user_delete_status(self):
         c = Client()
         status_pk = 1
-        response = c.post(reverse('delete_user', kwargs={'pk': status_pk}))
+        response = c.post(reverse('delete_status', kwargs={'pk': status_pk}))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('login'))
         self.assertEqual(get_message_txt(response),

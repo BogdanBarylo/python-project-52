@@ -15,5 +15,14 @@
         "description": "Description for Task 2",
         "task_status": 2,
         "executor": null,
-        "author": 2,
-        "timestamp": "2024-03-22T10:00:00"}}]
+        "author": 1,
+        "timestamp": "2024-03-22T10:00:00"}},
+        {"model": "tasks.Task",
+        "pk": 3,
+        "fields": {
+          "name": "Task 3",
+          "description": "Description for Task 3",
+          "task_status": 1,
+          "executor": null,
+          "author": 2,
+          "timestamp": "2024-03-22T10:00:00"}}]

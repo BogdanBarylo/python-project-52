@@ -27,7 +27,7 @@
         <td><a href="{% url 'task_information' task.pk %}">{{ task.name }}</a></td>
         <td>{{ task.task_status }}</td>
         <td>{{ task.author }}</td>
-        <td>{{ task.executor }}</td>
+        <td>{% if task.executor %}{{ task.executor }}{% endif %}</td>
         <td>{{ task.timestamp|date:'d.m.Y H:i' }}</td>
         <td>
           <a class="navbar-brand" href="{% url 'update_task' pk=task.pk %}">{% translate "Edit" %}</a>

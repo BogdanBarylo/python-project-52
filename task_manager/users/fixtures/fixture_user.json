@@ -12,4 +12,12 @@
             "first_name": "Richard",
             "last_name": "Hammond",
             "username": "Mrcrash",
-            "password": "Mustang_123"}}]
+            "password": "Mustang_123"}},
+            {
+                "model": "users.ProjectUser",
+                "pk": 3,
+                "fields": {
+                    "first_name": "Michael",
+                    "last_name": "Shumaher",
+                    "username": "Stig",
+                    "password": "Speed_999"}}]

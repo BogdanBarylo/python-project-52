@@ -7,4 +7,9 @@
     "pk": 2,
     "fields": {
         "name": "in_work",
+        "timestamp":"2024-03-15T11:00:00"}},
+    {"model": "statuses.Status",
+    "pk": 3,
+    "fields": {
+        "name": "finish",
         "timestamp":"2024-03-15T11:00:00"}}]

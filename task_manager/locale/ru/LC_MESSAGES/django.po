@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 16:15+0000\n"
+"POT-Creation-Date: 2024-03-23 09:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,20 +229,20 @@ msgstr "Удаление пользователя"
 msgid "User edit"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/views.py:25
+#: task_manager/users/views.py:26
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:37
+#: task_manager/users/views.py:38
 msgid "User successfully changed"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:58
+#: task_manager/users/views.py:52
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
 #: task_manager/users/views.py:64
-msgid "Cannot delete a user because it is in use"
+msgid "Cannot delete the user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
 #: task_manager/views.py:19

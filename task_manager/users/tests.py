@@ -73,17 +73,30 @@ class UpdateUserTestCase(TestCase):
 
 
 class DeleteUserTestCase(TestCase):
-    fixtures = ['task_manager/users/fixtures/fixture_user.json']
+    fixtures = ['task_manager/users/fixtures/fixture_user.json',
+                'task_manager/statuses/fixtures/status_fixture.json',
+                'task_manager/tasks/fixtures/task_fixture.json']
 
     def test_delete_user(self):
         c = Client()
-        user_pk = 1
-        c.force_login(ProjectUser.objects.get(username='Jeza'))
+        user_pk = 3
+        c.force_login(ProjectUser.objects.get(username='Stig'))
         response = c.post(reverse('delete_user', kwargs={'pk': user_pk}))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('all_users'))
         self.assertEqual(get_message_txt(response),
                          'Пользователь успешно удален')
+
+    def test_delete_using_user(self):
+        c = Client()
+        user_pk = 2
+        c.force_login(ProjectUser.objects.get(username='Mrcrash'))
+        response = c.post(reverse('delete_user', kwargs={'pk': user_pk}))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse('all_users'))
+        self.assertEqual(get_message_txt(response),
+                         'Невозможно удалить пользователя, '
+                         'потому что он используется')
 
     def test_unauthorized_user_delete(self):
         c = Client()
