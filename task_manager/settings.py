@@ -172,7 +172,7 @@ DATETIME_FORMAT = '%d.%m.%Y %H:%M'
 ROLLBAR_ACCESS_TOKEN = os.getenv('ROLLBAR_TOKEN')
 
 ROLLBAR = {
-    'access_token': ROLLBAR_ACCESS_TOKEN,
+    'access_token': 'ROLLBAR_ACCESS_TOKEN',
     'environment': 'development' if DEBUG else 'production',
     'branch': 'master',
     'root': BASE_DIR,
