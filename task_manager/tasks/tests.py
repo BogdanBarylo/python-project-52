@@ -21,7 +21,7 @@ class TaskFilterViewTestCase(TestCase):
     def test_task_filtering(self):
         c = Client()
         c.force_login(ProjectUser.objects.get(username='Jeza'))
-        response = c.get('/tasks/', {'task_status': 2})
+        response = c.get('/tasks/', {'status': 2})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, text='Task 2')
         self.assertNotContains(response, text='Task 1')
@@ -77,7 +77,7 @@ class CreateTaskTestCase(TestCase):
         c = Client()
         c.force_login(ProjectUser.objects.get(username='Jeza'))
         response = c.post(reverse('create_task'), {'name': 'Task 4',
-                                                   "task_status": 1,
+                                                   "status": 1,
                                                    "author": 1})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('all_tasks'))
@@ -106,7 +106,7 @@ class UpdateTaskTestCase(TestCase):
         task_pk = 1
         c.force_login(ProjectUser.objects.get(username='Jeza'))
         response = c.post(reverse('update_task', kwargs={'pk': task_pk}),
-                          {'name': 'Task 4', "task_status": 1})
+                          {'name': 'Task 4', "status": 1})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('all_tasks'))
         self.assertEqual(get_message_txt(response),

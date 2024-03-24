@@ -34,7 +34,7 @@
       <tr>
         <td>{{ task.pk }}</td>
         <td><a href="{% url 'task_information' task.pk %}">{{ task.name }}</a></td>
-        <td>{{ task.task_status }}</td>
+        <td>{{ task.status }}</td>
         <td>{{ task.author }}</td>
         <td>{% if task.executor %}{{ task.executor }}{% endif %}</td>
         <td>{{ task.timestamp|date:'d.m.Y H:i' }}</td>
