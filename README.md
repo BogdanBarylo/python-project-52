@@ -16,6 +16,7 @@ LANGUAGE_CODE = 'en'
 ### View site here:
 [Task Manager](https://task-manager-site-tpi0.onrender.com)
 
+
 ## Installation requirements
 
 - Python: 3.10
