@@ -15,7 +15,7 @@ class LabelListView(SuccessMessageMixin, CustomLoginRequiredMixin, ListView):
 
 class LabelCreateView(SuccessMessageMixin, CustomLoginRequiredMixin,
                       CreateView):
-    template_name = 'create_status.html'
+    template_name = 'create_label.html'
     model = Label
     fields = ['name']
     success_url = reverse_lazy('all_labels')
