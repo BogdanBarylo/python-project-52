@@ -15,6 +15,7 @@ class TaskFilter(django_filters.FilterSet):
     label = django_filters.filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
         field_name='labels',
+        label=_('Labels')
     )
 
     def filter_self_tasks(self, queryset, name, value):
