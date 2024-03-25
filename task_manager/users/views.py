@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.db.models import ProtectedError
 from task_manager.users.models import ProjectUser
 from task_manager.users.forms import RegistrationForm
-from task_manager.users.mixins import CustomUserMixin
+from task_manager.users.mixins import CustomUserPassesTestMixin
 from task_manager.mixins import CustomLoginRequiredMixin
 
 
@@ -27,7 +27,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserUpdateView(SuccessMessageMixin,
-                     CustomUserMixin,
+                     CustomUserPassesTestMixin,
                      CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      UpdateView):
@@ -43,7 +43,7 @@ class UserUpdateView(SuccessMessageMixin,
 
 
 class UserDeleteView(SuccessMessageMixin,
-                     CustomUserMixin,
+                     CustomUserPassesTestMixin,
                      CustomLoginRequiredMixin,
                      UserPassesTestMixin,
                      DeleteView):
