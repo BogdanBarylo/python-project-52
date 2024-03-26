@@ -1,10 +1,10 @@
-from django.shortcuts import redirect
-from django.contrib.auth import logout
-from django.views.generic.base import TemplateView
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.utils.translation import gettext as _
+from django.views.generic.base import TemplateView
 
 
 class HomePageView(TemplateView):

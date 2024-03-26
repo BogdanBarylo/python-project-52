@@ -1,15 +1,15 @@
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext as _
-from django.contrib import messages
 from django.db.models import ProtectedError
-from task_manager.users.models import ProjectUser
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from task_manager.mixins import CustomLoginRequiredMixin
 from task_manager.users.forms import RegistrationForm
 from task_manager.users.mixins import CustomUserPassesTestMixin
-from task_manager.mixins import CustomLoginRequiredMixin
+from task_manager.users.models import ProjectUser
 
 
 class UsersListView(ListView):

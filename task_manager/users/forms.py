@@ -1,5 +1,6 @@
-from .models import ProjectUser
 from django.contrib.auth.forms import UserCreationForm
+
+from .models import ProjectUser
 
 
 class RegistrationForm(UserCreationForm):

@@ -1,8 +1,8 @@
 from django.db import models
+from django.utils.translation import gettext as _
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.users.models import ProjectUser
-from task_manager.labels.models import Label
-from django.utils.translation import gettext as _
 
 
 class Task(models.Model):

@@ -1,8 +1,8 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from django.urls import reverse
+from task_manager.check_message import get_message_txt
 from task_manager.tasks.models import Task
 from task_manager.users.models import ProjectUser
-from task_manager.check_message import get_message_txt
 
 
 class TaskFilterViewTestCase(TestCase):

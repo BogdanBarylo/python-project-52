@@ -1,13 +1,13 @@
-from django.urls import reverse_lazy
-from django.views.generic import (CreateView,
-                                  UpdateView, DeleteView, DetailView)
-from django_filters.views import FilterView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-from .filters import TaskFilter
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
+from django_filters.views import FilterView
+from task_manager.mixins import CustomLoginRequiredMixin
 from task_manager.tasks.mixins import CustomTaskPassesTestMixin
 from task_manager.tasks.models import Task
-from task_manager.mixins import CustomLoginRequiredMixin
+
+from .filters import TaskFilter
 
 
 class TasksFilterView(CustomLoginRequiredMixin, FilterView):

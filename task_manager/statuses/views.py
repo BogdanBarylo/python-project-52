@@ -1,11 +1,11 @@
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
-from django.contrib import messages
-from task_manager.statuses.models import Status
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from task_manager.mixins import CustomLoginRequiredMixin
+from task_manager.statuses.models import Status
 
 
 class StatusListView(SuccessMessageMixin, CustomLoginRequiredMixin, ListView):
