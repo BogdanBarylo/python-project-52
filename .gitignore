@@ -1,6 +1,7 @@
 __pycache__/
 .venv/
 .env
+.codeclimate.yml
 *.sqlite3
 staticfiles
 coverage.xml
