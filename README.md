@@ -7,6 +7,7 @@
 
 # Task Manager
 
+
 ## Usage
 Task Manager is a task management system. It allows you to set tasks, assign executors and change their statuses.
 To use the application, you need to register and log in with your username and password.
