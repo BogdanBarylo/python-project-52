@@ -31,8 +31,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
 ALLOWED_HOSTS = ['webserver', '127.0.0.1',
-                 'task-manager-site-tpi0.onrender.com']
+                 RENDER_EXTERNAL_HOSTNAME]
 
 
 # Application definition
