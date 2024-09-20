@@ -5,7 +5,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/db3c5ac363e7706ece1e/maintainability)](https://codeclimate.com/github/BogdanBarylo/python-project-52/maintainability)
 
 
-
 # Task Manager
 
 ## Usage
